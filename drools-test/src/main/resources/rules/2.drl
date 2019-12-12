@@ -1,0 +1,13 @@
+import com.drools_test.Stu;
+import function com.drools_test.ConnectionUtil.connection;
+
+
+rule "rule_huhu"
+	salience 1
+when
+	$stu:Stu(getGender() == 'male' && getAge() > 30)
+	Stu(connection("select * from t_dict_item where cid = 3822"))
+then
+	System.out.println("名字: "+$stu.getName() + " 性别: "+$stu.getGender());
+	connection("select * from t_dict_item where cid = 5059");
+end
